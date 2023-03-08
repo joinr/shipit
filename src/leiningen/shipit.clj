@@ -73,7 +73,7 @@
 ;;update in-memory project to add that to source-paths
 
 (defn ^:no-project-needed
-  shipit
+  org.clojars.joinr/shipit
   "Given a path to a clojure file, creates an uberjar with a main entrypoint
    that bundles the file and invokes load-file.  Designed to provide a simple
    means for shipping single clj scripts as uberjars."

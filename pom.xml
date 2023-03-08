@@ -18,7 +18,7 @@
     <url>https://github.com/joinr/shipit</url>
     <connection>scm:git:git://github.com/joinr/shipit.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/joinr/shipit.git</developerConnection>
-    <tag>fa5fe894e7e663d2eccfd62624c3737dd1360c65</tag>
+    <tag>e8ca160d36466274df534854d4e78d8ecd39725e</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
