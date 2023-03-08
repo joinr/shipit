@@ -18,12 +18,12 @@ the pathways are the same).  Then that project is uberjar'd using lein's facilit
 
 Use this for user-level plugins:
 
-Put `[org.clojars.joinr/shipit "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user`
+Put ~[org.clojars.joinr/shipit "0.1.0-SNAPSHOT"]~ into the ~:plugins~ vector of your ~:user~
 profile.
 
 FIXME: Use this for project-level plugins:
 
-Put `[org.clojars.joinr/shipit "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your project.clj.
+Put ~[org.clojars.joinr/shipit "0.1.0-SNAPSHOT"]~ into the ~:plugins~ vector of your project.clj.
 
 ** blah.clj
 #+BEGIN_SRC clojure
