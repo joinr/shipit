@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>shipit</groupId>
+  <groupId>org.clojars.joinr</groupId>
   <artifactId>shipit</artifactId>
   <packaging>jar</packaging>
   <version>0.1.0-SNAPSHOT</version>
@@ -18,7 +18,7 @@
     <url>https://github.com/joinr/shipit</url>
     <connection>scm:git:git://github.com/joinr/shipit.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/joinr/shipit.git</developerConnection>
-    <tag>1385a6fa2a70e5f5fddc0d34a43c82b2efb39535</tag>
+    <tag>07add382fcf78e684de24bb125b83c85627d06a8</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
