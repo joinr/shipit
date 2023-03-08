@@ -1,0 +1,97 @@
+* shipit
+
+A plugin for Leiningen that bundles simple clj files into an uberjar, to be invoked with load-file.
+
+** Implementation
+If you write a simple script, it can be bundled and shared.  This is accomplished by creating
+a temp folder for a tiny lein project.  We bundle your clj file as a resource, which the
+entrypoint invokes akin to `load-file` (technically we are loading from a resource, but
+the pathways are the same).  Then that project is uberjar'd using lein's facilitities.
+
+** Limitations
+   You get one file, that's it.  No specifying dependenciese or entry points or project
+   management.  Just get off your duff and use lein and build an actual uberjar at that point.
+   This was created to address the niche problem (and explore lein plugin dev) from
+   [[https://www.reddit.com/r/Clojure/comments/11fee64/compiling_simple_clj_files/][a discussion on r/clojure]] .
+
+* Usage
+
+Use this for user-level plugins:
+
+Put `[shipit "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user`
+profile.
+
+FIXME: Use this for project-level plugins:
+
+Put `[shipit "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your project.clj.
+
+** blah.clj
+#+BEGIN_SRC clojure
+(println "hello!")
+#+END_SRC
+
+** cli
+#+BEGIN_SRC bash
+joinr@DESKTOP-UIAPQD5 MINGW64 ~
+$ lein shipit blah.clj
+[creating temp project C:\Users\joinr\AppData\Local\Temp\90a30b4a-34a2-482f-922a-064ac6811185\src\shipit\main.clj]
+[copying resource blah.clj C:\Users\joinr\AppData\Local\Temp\90a30b4a-34a2-482f-922a-064ac6811185\resources\blah.clj]
+Applying task javac to nil
+Created new pathing jar:  C:\Users\joinr\.cpcache\F1A3F82CBA16AC4125455B524D013CFC.jar
+Running javac with [@C:\Users\joinr\AppData\Local\Temp\.leiningen-cmdline6821660385182488334.tmp]
+Applying task compile to nil
+Using existing pathing jar for classpath:  C:\Users\joinr\.cpcache\F1A3F82CBA16AC4125455B524D013CFC.jar
+Compiling shipit.main
+Created C:\Users\joinr\AppData\Local\Temp\90a30b4a-34a2-482f-922a-064ac6811185\target\shipit-1.0.0.jar
+Including shipit-1.0.0.jar
+Including clojure-1.11.1.jar
+Including spec.alpha-0.3.218.jar
+Including core.specs.alpha-0.2.62.jar
+Created C:\Users\joinr\AppData\Local\Temp\90a30b4a-34a2-482f-922a-064ac6811185\target\shipit-1.0.0-standalone.jar
+[copying jar C:\Users\joinr\AppData\Local\Temp\90a30b4a-34a2-482f-922a-064ac6811185\target\shipit-1.0.0-standalone.jar blah.jar]
+[:deleting C:\Users\joinr\AppData\Local\Temp\90a30b4a-34a2-482f-922a-064ac6811185]
+
+joinr@DESKTOP-UIAPQD5 MINGW64 ~
+$ java -jar blah.jar
+hello!
+#+END_SRC
+
+Should be cross platform, although pathing is probably brittle (absolute paths will work though).
+
+#+BEGIN_SRC
+
+PS C:\Users\joinr> lein shipit blah.clj
+[creating temp project C:\Users\joinr\AppData\Local\Temp\9d37f76d-ccc4-4e73-88a4-a06e23de0703\src\shipit\main.clj]
+[copying resource blah.clj C:\Users\joinr\AppData\Local\Temp\9d37f76d-ccc4-4e73-88a4-a06e23de0703\resources\blah.clj]
+Applying task javac to nil
+Created new pathing jar:  C:\Users\joinr\.cpcache\DABF4D31E607B5D5BA165AC4F4B39019.jar
+Running javac with [@C:\Users\joinr\AppData\Local\Temp\.leiningen-cmdline5876081685054729469.tmp]
+Applying task compile to nil
+Using existing pathing jar for classpath:  C:\Users\joinr\.cpcache\DABF4D31E607B5D5BA165AC4F4B39019.jar
+Compiling shipit.main
+Created C:\Users\joinr\AppData\Local\Temp\9d37f76d-ccc4-4e73-88a4-a06e23de0703\target\shipit-1.0.0.jar
+Including shipit-1.0.0.jar
+Including clojure-1.11.1.jar
+Including spec.alpha-0.3.218.jar
+Including core.specs.alpha-0.2.62.jar
+Created C:\Users\joinr\AppData\Local\Temp\9d37f76d-ccc4-4e73-88a4-a06e23de0703\target\shipit-1.0.0-standalone.jar
+[copying jar C:\Users\joinr\AppData\Local\Temp\9d37f76d-ccc4-4e73-88a4-a06e23de0703\target\shipit-1.0.0-standalone.jar blah.jar]
+[:deleting C:\Users\joinr\AppData\Local\Temp\9d37f76d-ccc4-4e73-88a4-a06e23de0703]
+PS C:\Users\joinr> java -jar blah.jar
+hello!
+PS C:\Users\joinr>
+#+END_SRC
+
+* License
+Copyright © 2023 joinr
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License 2.0 which is available at
+http://www.eclipse.org/legal/epl-2.0.
+
+This Source Code may also be made available under the following Secondary
+Licenses when the conditions for such availability set forth in the Eclipse
+Public License, v. 2.0 are satisfied: GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or (at your
+option) any later version, with the GNU Classpath Exception which is available
+at https://www.gnu.org/software/classpath/license.html.

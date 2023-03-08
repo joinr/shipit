@@ -14,7 +14,12 @@
       <url>https://www.eclipse.org/legal/epl-2.0/</url>
     </license>
   </licenses>
-  <scm/>
+  <scm>
+    <url>https://github.com/joinr/shipit</url>
+    <connection>scm:git:git://github.com/joinr/shipit.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/joinr/shipit.git</developerConnection>
+    <tag>fa5fe894e7e663d2eccfd62624c3737dd1360c65</tag>
+  </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
